@@ -1,0 +1,31 @@
+version: '3'
+services:
+  web:
+    container_name: web_server
+    build: .
+    links:
+      - mysql
+      - redis
+    depends_on:
+      - mysql
+      - redis
+    volumes:
+      - "./test-app:/var/www/html"
+    ports:
+      - "80:80"
+      - "433:433"
+  mysql:
+    image: mysql:5.7
+    container_name: mysql_server
+    volumes:
+        - ./docker/runtime/mysql/lib:/var/lib/mysql
+    environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_USER: testdrive
+        MYSQL_PASSWORD: testdrive
+        MYSQL_DATABASE: testdrive
+  redis:
+    image: redis:alpine
+    container_name: redis_cache
+    ports:
+      - "6379:6379"
