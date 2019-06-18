@@ -11,6 +11,7 @@ services:
       - redis
     volumes:
       - "./test-app:/var/www/html"
+      - "./config/nginx/default.conf:/etc/nginx/conf.d/default.conf"
     ports:
       - "80:80"
       - "433:433"
