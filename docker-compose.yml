@@ -25,6 +25,8 @@ services:
         MYSQL_USER: testdrive
         MYSQL_PASSWORD: testdrive
         MYSQL_DATABASE: testdrive
+      ports:
+        - "3306:3306"
   redis:
     image: redis:alpine
     container_name: redis_cache
