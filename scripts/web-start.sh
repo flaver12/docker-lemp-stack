@@ -1,4 +1,2 @@
 #!/bin/sh
-exec nginx -g 'daemon off;'
-exec service nginx start
-exec service php7.3-fpm start
+service php7.3-fpm start && nginx -g "daemon off;"

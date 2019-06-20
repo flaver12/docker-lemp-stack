@@ -22,5 +22,6 @@ RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources
 RUN apt-get -y update
 RUN apt-get -y install yarn
 
+RUN echo "exit 0" > /usr/sbin/policy-rc.d
 COPY scripts/web-start.sh /
 CMD ["./web-start.sh"]
